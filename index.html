@@ -7,32 +7,31 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 20px;
-      font-size: 1.0rem;
+      font-size: 14px;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-bottom: 0.3rem;
     }
 
     .subtitle {
       font-size: 0.95rem;
       color: #444;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.2rem;
     }
 
-    .period {
+    .range-note {
       font-size: 0.95rem;
-      color: #222;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
 
     .source-note {
-      margin: 6px 0 16px 0;
-      padding: 8px 12px;
-      border-left: 4px solid #555;
+      margin: 8px 0 14px 0;
+      padding: 8px 10px;
+      border-left: 4px solid #444;
       background: #f9f9f9;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.4;
     }
 
@@ -44,41 +43,34 @@
       margin-bottom: 8px;
     }
 
-    .filters-row > div {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
+    .filters-row label {
       font-weight: 600;
+      font-size: 0.9rem;
       margin-bottom: 2px;
     }
 
-    select {
-      min-width: 220px;
-      padding: 5px 8px;
-      font-size: 0.95rem;
+    .filters-row select {
+      min-width: 200px;
+      padding: 4px 8px;
+      font-size: 0.9rem;
     }
 
     .status {
-      margin-top: 6px;
-      margin-bottom: 6px;
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       color: #555;
+      margin-bottom: 6px;
     }
 
     .error {
-      margin-top: 6px;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
       color: #b00020;
       font-weight: 600;
+      margin-top: 4px;
+      font-size: 0.9rem;
     }
 
     .table-wrapper {
       max-width: 100%;
       overflow-x: auto;
-      margin-top: 8px;
     }
 
     .table-container {
@@ -97,95 +89,76 @@
     th, td {
       border-bottom: 1px solid #e0e0e0;
       padding: 4px 6px;
-      font-size: 0.95rem;
-      line-height: 1.25;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      white-space: nowrap;
     }
 
     th {
       background: #f6f6f6;
-      text-align: left;
-      font-weight: 700;
       position: sticky;
       top: 0;
       z-index: 2;
+    }
+
+    th.num-header {
+      text-align: center;
+    }
+
+    td.name-cell {
+      white-space: nowrap;
+    }
+
+    td.party-cell {
+      white-space: nowrap;
+    }
+
+    td.number-cell {
+      text-align: center; /* ČIA – centravimas */
     }
 
     tr:nth-child(even) td {
       background: #fafafa;
     }
 
-    .number-cell {
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .index-cell {
-      text-align: right;
-      width: 40px;
-      white-space: nowrap;
-    }
-
-    .name-cell {
-      white-space: nowrap;
-      width: 230px;
-    }
-
-    .party-cell {
-      white-space: nowrap;
-      width: 200px;
-    }
-
     .party-badge {
       display: inline-block;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.88rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
       font-weight: 600;
       color: #fff;
       white-space: nowrap;
     }
 
-    .sortable {
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .sortable::after {
-      content: " ⇅";
+    .legend {
+      margin-top: 6px;
       font-size: 0.8rem;
-      color: #999;
-    }
-
-    .sortable.sorted-asc::after {
-      content: " ↑";
       color: #555;
     }
 
-    .sortable.sorted-desc::after {
-      content: " ↓";
-      color: #555;
+    .legend span {
+      margin-right: 10px;
     }
 
-    .hint {
-      margin-top: 4px;
-      font-size: 0.9rem;
-      color: #777;
+    .legend .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      margin-right: 4px;
+      vertical-align: middle;
     }
 
     @media (max-width: 768px) {
       body {
         margin: 10px;
-        font-size: 0.95rem;
       }
       h1 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
-      .subtitle,
-      .period {
-        font-size: 0.9rem;
-      }
-      select {
-        min-width: 180px;
+      .filters-row select {
+        min-width: 160px;
       }
       table {
         min-width: 800px;
@@ -196,38 +169,45 @@
 <body>
   <h1>Seimo narių balsavimo statistika</h1>
   <div class="subtitle">Metinė statistika.</div>
-  <div class="period">Pirmieji kadencijos metai: <b>2024-11-14 – 2025-11-14</b></div>
+  <div class="range-note">Pirmieji kadencijos metai: <b>2024-11-14 – 2025-11-14</b></div>
 
   <div class="source-note">
     <b>Privaloma šaltinio nuoroda.</b><br />
-    Duomenys paimti iš Seimo nario Vitalijaus Šeršniovo parengto šaltinio.
+    Naudojant, cituojant ar dalinantis šioje lentelėje pateikta informacija, būtina aiškiai nurodyti šaltinį:<br />
+    <em>„Duomenys paimti iš Seimo nario Vitalijaus Šeršniovo parengto šaltinio.“</em>
   </div>
 
   <div class="filters-row">
     <div>
-      <label for="partyFilter">Filtruoti pagal partiją:</label>
+      <label for="partyFilter">Filtruoti pagal partiją / frakciją:</label><br>
       <select id="partyFilter">
         <option value="ALL">Visos partijos</option>
       </select>
     </div>
     <div>
-      <label for="sortMetric">Rikiuoti pagal rodiklį:</label>
-      <select id="sortMetric">
-        <option value="">— Pasirinkti rodiklį —</option>
-        <option value="name">Seimo narys (abėcėle)</option>
-        <option value="party">Partija / frakcija</option>
-        <option value="nedalyvavo">Nedalyvavo (↓)</option>
-        <option value="pries">Prieš (↓)</option>
-        <option value="uz">Už (↓)</option>
-        <option value="susilaike">Susilaikė (↓)</option>
-        <option value="registravosi">Registravosi (↓)</option>
-        <option value="uzA">Už A (↓)</option>
-        <option value="uzB">Už B (↓)</option>
+      <label for="sortSelect">Rikiuoti pagal rodiklį:</label><br>
+      <select id="sortSelect">
+        <option value="name_asc">Seimo narys (abėcėlė)</option>
+        <option value="party_asc">Partija / frakcija (abėcėlė)</option>
+        <option value="nedalyvavo_desc">Nedalyvavo (↓)</option>
+        <option value="nedalyvavo_asc">Nedalyvavo (↑)</option>
+        <option value="pries_desc">Prieš (↓)</option>
+        <option value="pries_asc">Prieš (↑)</option>
+        <option value="uz_desc">Už (↓)</option>
+        <option value="uz_asc">Už (↑)</option>
+        <option value="susilaike_desc">Susilaikė (↓)</option>
+        <option value="susilaike_asc">Susilaikė (↑)</option>
+        <option value="registravosi_desc">Registravosi (↓)</option>
+        <option value="registravosi_asc">Registravosi (↑)</option>
+        <option value="uza_desc">Už A (↓)</option>
+        <option value="uza_asc">Už A (↑)</option>
+        <option value="uzb_desc">Už B (↓)</option>
+        <option value="uzb_asc">Už B (↑)</option>
       </select>
     </div>
   </div>
 
-  <div id="status" class="status">Bandome įkelti duomenis...</div>
+  <div id="status" class="status">Kraunami duomenys...</div>
   <div id="error" class="error" style="display:none;"></div>
 
   <div class="table-wrapper">
@@ -236,43 +216,35 @@
         <thead>
           <tr>
             <th>#</th>
-            <th class="sortable" data-sort-key="name">Seimo narys</th>
-            <th class="sortable" data-sort-key="party">Partija</th>
-            <th class="sortable" data-sort-key="nedalyvavo">Nedalyvavo</th>
-            <th class="sortable" data-sort-key="pries">Prieš</th>
-            <th class="sortable" data-sort-key="uz">Už</th>
-            <th class="sortable" data-sort-key="susilaike">Susilaikė</th>
-            <th class="sortable" data-sort-key="registravosi">Registravosi</th>
-            <th class="sortable" data-sort-key="uzA">Už A</th>
-            <th class="sortable" data-sort-key="uzB">Už B</th>
+            <th>Seimo narys</th>
+            <th>Partija / frakcija</th>
+            <th class="num-header">Nedalyvavo</th>
+            <th class="num-header">Prieš</th>
+            <th class="num-header">Už</th>
+            <th class="num-header">Susilaikė</th>
+            <th class="num-header">Registravosi</th>
+            <th class="num-header">Už A</th>
+            <th class="num-header">Už B</th>
           </tr>
         </thead>
-        <tbody id="statsBody">
-          <!-- Eilutės bus sugeneruotos čia -->
+        <tbody id="tableBody">
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class="hint">
-    Pastaba: skaičiai rodo, kiek kartų per pirmuosius kadencijos metus Seimo narys balsavo atitinkamu būdu.
+  <div class="legend">
+    <span><span class="dot" style="background:#43BBAE;"></span>Tėvynės sąjunga–LKD</span>
+    <span><span class="dot" style="background:#FDBB38;"></span>Liberalai</span>
+    <span><span class="dot" style="background:#3A5778;"></span>Demokratai</span>
+    <span><span class="dot" style="background:#FA0016;"></span>Socialdemokratai</span>
+    <span><span class="dot" style="background:#95D05F;"></span>Lietuvos valstiečių, žaliųjų ir KŠS frakcija</span>
+    <span><span class="dot" style="background:#868A8D;"></span>Mišri grupė</span>
+    <span><span class="dot" style="background:#9A4418;"></span>Nemuno aušra</span>
   </div>
 
   <script>
-    // Duomenų struktūra
-    const dataRows = []; // { name, partyName, partyCategory, nedalyvavo, pries, uz, susilaike, registravosi, uzA, uzB }
-    const memberParty = {}; // iš members_parties.csv
-
-    const partyFilterSelect = document.getElementById("partyFilter");
-    const sortMetricSelect = document.getElementById("sortMetric");
-    const statusEl = document.getElementById("status");
-    const errorEl = document.getElementById("error");
-    const statsBody = document.getElementById("statsBody");
-
-    let currentPartyFilter = "ALL";
-    let currentSort = { key: "name", direction: "asc" };
-
-    // Partijų kategorijos ir spalvos (tokios pat kaip kitame instrumente)
+    // ---- Partijų spalvos ----
     const categoryColors = {
       "Tėvynės sąjunga–LKD": "#43BBAE",
       "Liberalai": "#FDBB38",
@@ -292,12 +264,8 @@
       if (p.includes("tėvynės sąjunga") || p.includes("tėvynės sajunga") || p.includes("ts-lkd")) {
         return "Tėvynės sąjunga–LKD";
       }
-      if (p.includes("liberalų sąjūdis") || p.includes("liberalai")) {
-        return "Liberalai";
-      }
-      if (p.includes("socialdemokrat")) {
-        return "Socialdemokratai";
-      }
+      if (p.includes("liberal")) return "Liberalai";
+      if (p.includes("socialdemokrat")) return "Socialdemokratai";
       if (p.includes("demokratų sąjunga") || p.includes("vardan lietuvos")) {
         return "Demokratai";
       }
@@ -312,310 +280,266 @@
       return categoryColors[category] || "#9e9e9e";
     }
 
-    function parseInteger(value) {
-      if (!value) return 0;
-      const cleaned = value.replace(/\s/g, "").replace(",", ".");
-      const num = Number(cleaned);
-      return Number.isFinite(num) ? num : 0;
+    // ---- Kintamieji ----
+    const partyFilterEl = document.getElementById("partyFilter");
+    const sortSelectEl = document.getElementById("sortSelect");
+    const tableBody = document.getElementById("tableBody");
+    const statusEl = document.getElementById("status");
+    const errorEl = document.getElementById("error");
+
+    let allRows = [];          // pilna lentele
+    let currentPartyFilter = "ALL";
+    let currentSort = "name_asc";
+
+    // ---- CSV parsinimas (paprastas, ; arba ,) ----
+    function parseSimpleCSV(text) {
+      const lines = text.trim().split(/\r?\n/).filter(l => l.trim().length > 0);
+      if (!lines.length) return [];
+      const delimiter = lines[0].includes(";") ? ";" : ",";
+      return lines.map(line => line.split(delimiter).map(c => c.trim()));
     }
 
-    function detectDelimiter(headerLine) {
-      // Jei yra tik kabliataškiai – naudosim ;, jei tik kableliai – ,
-      if (headerLine.includes(";") && !headerLine.includes(",")) return ";";
-      if (headerLine.includes(",") && !headerLine.includes(";")) return ",";
-      // jei abu – bandome su kabliataškiu kaip dažnesniu Excel LT variantu
-      return ";";
+    async function loadMembersParties() {
+      try {
+        const resp = await fetch("members_parties.csv");
+        if (!resp.ok) return {};
+        const txt = await resp.text();
+        const rows = parseSimpleCSV(txt);
+        if (rows.length < 2) return {};
+        const header = rows[0].map(h => h.toLowerCase());
+        const idxMember = header.indexOf("member");
+        const idxParty = header.indexOf("party");
+        if (idxMember === -1 || idxParty === -1) return {};
+
+        const map = {};
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i];
+          const name = r[idxMember] || "";
+          const party = r[idxParty] || "";
+          if (!name) continue;
+          map[name] = party;
+        }
+        return map;
+      } catch (e) {
+        console.warn("Nepavyko nuskaityti members_parties.csv:", e);
+        return {};
+      }
     }
 
-    async function loadStats() {
-      const response = await fetch("metu_balsavimas1.csv");
-      if (!response.ok) {
+    async function loadStats(partyMap) {
+      const resp = await fetch("metu_balsavimas1.csv");
+      if (!resp.ok) {
         throw new Error("Nepavyko nuskaityti failo „metu_balsavimas1.csv“. Patikrink, ar jis yra šalia HTML.");
       }
-      const text = await response.text();
-      const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
-      if (lines.length < 2) {
+      const txt = await resp.text();
+      const rows = parseSimpleCSV(txt);
+      if (rows.length < 2) {
         throw new Error("„metu_balsavimas1.csv“ faile per mažai eilučių.");
       }
 
-      const headerLine = lines[0];
-      const delimiter = detectDelimiter(headerLine);
-      const headers = headerLine.split(delimiter).map(h => h.trim());
+      const headerRaw = rows[0];
+      const header = headerRaw.map(h => h.toLowerCase());
 
-      const idxName         = headers.findIndex(h => h.toLowerCase() === "seimo nariai");
-      const idxNedalyvavo   = headers.findIndex(h => h.toLowerCase() === "nedalyvavo");
-      const idxPries        = headers.findIndex(h => h.toLowerCase() === "prieš" || h.toLowerCase() === "pries");
-      const idxUz           = headers.findIndex(h => h.toLowerCase() === "už" || h.toLowerCase() === "uz");
-      const idxSusilaike    = headers.findIndex(h => h.toLowerCase() === "susilaikė" || h.toLowerCase() === "susilaike");
-      const idxRegistravosi = headers.findIndex(h => h.toLowerCase() === "registravosi");
-      const idxUzA          = headers.findIndex(h => h.toLowerCase() === "už a" || h.toLowerCase() === "uz a");
-      const idxUzB          = headers.findIndex(h => h.toLowerCase() === "už b" || h.toLowerCase() === "uz b");
-
-      const requiredMissing =
-        idxName === -1 ||
-        idxNedalyvavo === -1 ||
-        idxPries === -1 ||
-        idxUz === -1 ||
-        idxSusilaike === -1 ||
-        idxRegistravosi === -1 ||
-        idxUzA === -1 ||
-        idxUzB === -1;
-
-      if (requiredMissing) {
-        throw new Error("„metu_balsavimas1.csv“ antraštėje turi būti stulpeliai: Seimo nariai, Nedalyvavo, Prieš, Už, Susilaikė, Registravosi, Už A, Už B.");
+      function findIndex(names) {
+        for (const n of names) {
+          const idx = header.findIndex(h => h === n || h.startsWith(n));
+          if (idx !== -1) return idx;
+        }
+        return -1;
       }
 
-      for (let i = 1; i < lines.length; i++) {
-        const line = lines[i];
-        if (!line.trim()) continue;
-        const cols = line.split(delimiter);
+      const idxName        = findIndex(["seimo nariai"]);
+      const idxNedalyvavo  = findIndex(["nedalyvavo"]);
+      const idxPries       = findIndex(["prieš", "pries"]);
+      const idxUz          = findIndex(["už", "uz"]);
+      const idxSusilaike   = findIndex(["susilaikė", "susilaike"]);
+      const idxRegistr     = findIndex(["registravosi"]);
+      const idxUzA         = findIndex(["už a", "uz a"]);
+      const idxUzB         = findIndex(["už b", "uz b"]);
 
-        if (cols.length <= idxName) continue;
+      if (idxName === -1 || idxNedalyvavo === -1 || idxPries === -1 ||
+          idxUz === -1 || idxSusilaike === -1 || idxRegistr === -1 ||
+          idxUzA === -1 || idxUzB === -1) {
+        throw new Error("„metu_balsavimas1.csv“ antraštėje turi būti: Seimo nariai, Nedalyvavo, Prieš, Už, Susilaikė, Registravosi, Už A, Už B.");
+      }
 
-        const name = (cols[idxName] || "").trim();
+      const data = [];
+
+      for (let i = 1; i < rows.length; i++) {
+        const r = rows[i];
+        const name = r[idxName] || "";
         if (!name) continue;
 
-        const row = {
+        function num(idx) {
+          const v = (r[idx] || "").replace(",", ".").trim();
+          const n = Number(v);
+          return Number.isFinite(n) ? n : 0;
+        }
+
+        const ned = num(idxNedalyvavo);
+        const pr  = num(idxPries);
+        const uz  = num(idxUz);
+        const sus = num(idxSusilaike);
+        const reg = num(idxRegistr);
+        const uza = num(idxUzA);
+        const uzb = num(idxUzB);
+
+        const partyName = partyMap[name] || "";
+        const partyCategory = getPartyCategory(partyName);
+
+        data.push({
           name,
-          partyName: "",
-          partyCategory: "",
-          nedalyvavo:   parseInteger(cols[idxNedalyvavo]),
-          pries:        parseInteger(cols[idxPries]),
-          uz:           parseInteger(cols[idxUz]),
-          susilaike:    parseInteger(cols[idxSusilaike]),
-          registravosi: parseInteger(cols[idxRegistravosi]),
-          uzA:          parseInteger(cols[idxUzA]),
-          uzB:          parseInteger(cols[idxUzB])
-        };
-
-        dataRows.push(row);
+          partyName,
+          partyCategory,
+          nedalyvavo: ned,
+          pries: pr,
+          uz,
+          susilaike: sus,
+          registravosi: reg,
+          uza,
+          uzb
+        });
       }
+
+      return data;
     }
 
-    async function loadParties() {
-      try {
-        const response = await fetch("members_parties.csv");
-        if (!response.ok) {
-          console.warn("Nepavyko nuskaityti „members_parties.csv“. Partijos nebus rodomos.");
-          return;
-        }
-        const text = await response.text();
-        const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
-        if (lines.length < 2) {
-          console.warn("„members_parties.csv“ faile per mažai eilučių.");
-          return;
-        }
-
-        const headerLine = lines[0];
-        const delimiter = detectDelimiter(headerLine);
-        const headers = headerLine.split(delimiter).map(h => h.trim());
-
-        const idxMember = headers.findIndex(h => h.toLowerCase() === "member");
-        const idxParty  = headers.findIndex(h => h.toLowerCase() === "party");
-
-        if (idxMember === -1 || idxParty === -1) {
-          console.warn("„members_parties.csv“ antraštėje turi būti stulpeliai: member, party.");
-          return;
-        }
-
-        for (let i = 1; i < lines.length; i++) {
-          const line = lines[i];
-          if (!line.trim()) continue;
-          const cols = line.split(delimiter);
-          if (cols.length <= Math.max(idxMember, idxParty)) continue;
-
-          const member = (cols[idxMember] || "").trim();
-          const party  = (cols[idxParty] || "").trim();
-          if (!member) continue;
-
-          memberParty[member] = party;
-        }
-      } catch (err) {
-        console.error("Klaida skaitant „members_parties.csv“:", err);
-      }
-    }
-
-    function attachParties() {
-      dataRows.forEach(row => {
-        const partyName = memberParty[row.name] || "";
-        row.partyName = partyName;
-        row.partyCategory = getPartyCategory(partyName);
+    function buildPartyFilterOptions(rows) {
+      const set = new Set();
+      rows.forEach(r => {
+        if (r.partyCategory) set.add(r.partyCategory);
       });
-    }
-
-    function buildPartyFilterOptions() {
-      const categories = new Set();
-      dataRows.forEach(row => {
-        if (row.partyCategory && row.partyCategory.trim()) {
-          categories.add(row.partyCategory.trim());
-        }
-      });
-
-      const sorted = Array.from(categories).sort((a, b) => a.localeCompare(b, "lt"));
-
-      partyFilterSelect.innerHTML = "";
+      const sorted = Array.from(set).sort((a, b) => a.localeCompare(b, "lt"));
+      partyFilterEl.innerHTML = "";
       const allOpt = document.createElement("option");
       allOpt.value = "ALL";
       allOpt.textContent = "Visos partijos";
-      partyFilterSelect.appendChild(allOpt);
+      partyFilterEl.appendChild(allOpt);
 
       sorted.forEach(cat => {
         const opt = document.createElement("option");
         opt.value = cat;
         opt.textContent = cat;
-        partyFilterSelect.appendChild(opt);
+        partyFilterEl.appendChild(opt);
       });
     }
 
-    function fmtNumber(n) {
-      return n.toLocaleString("lt-LT");
-    }
+    function applyFilterAndSort() {
+      if (!allRows.length) return;
 
-    function renderTable() {
-      statsBody.innerHTML = "";
+      let rows = allRows.slice();
 
-      let rows = dataRows.slice();
-
+      // filtras pagal partiją
       if (currentPartyFilter !== "ALL") {
         rows = rows.filter(r => r.partyCategory === currentPartyFilter);
       }
 
-      rows.sort((a, b) => {
-        const dir = currentSort.direction === "asc" ? 1 : -1;
-        const key = currentSort.key;
+      // rikiavimas
+      const mode = currentSort; // pvz. "nedalyvavo_desc"
+      if (mode === "name_asc") {
+        rows.sort((a, b) => a.name.localeCompare(b.name, "lt"));
+      } else if (mode === "party_asc") {
+        rows.sort((a, b) => {
+          const p = a.partyCategory.localeCompare(b.partyCategory, "lt");
+          if (p !== 0) return p;
+          return a.name.localeCompare(b.name, "lt");
+        });
+      } else {
+        const [field, dir] = mode.split("_"); // pvz. ["nedalyvavo","desc"]
+        const multiplier = dir === "asc" ? 1 : -1;
 
-        if (key === "name") {
-          return a.name.localeCompare(b.name, "lt") * dir;
+        const fieldMap = {
+          "nedalyvavo": "nedalyvavo",
+          "pries": "pries",
+          "uz": "uz",
+          "susilaike": "susilaike",
+          "registravosi": "registravosi",
+          "uza": "uza",
+          "uzb": "uzb"
+        };
+
+        const prop = fieldMap[field];
+        if (prop) {
+          rows.sort((a, b) => {
+            const diff = (a[prop] - b[prop]) * multiplier;
+            if (diff !== 0) return diff;
+            return a.name.localeCompare(b.name, "lt");
+          });
         }
-        if (key === "party") {
-          return a.partyCategory.localeCompare(b.partyCategory, "lt") * dir;
-        }
+      }
 
-        // skaitiniai rodikliai
-        return (a[key] - b[key]) * dir;
-      });
+      renderTable(rows);
+    }
 
-      document.querySelectorAll("th.sortable").forEach(th => {
-        th.classList.remove("sorted-asc", "sorted-desc");
-        const key = th.getAttribute("data-sort-key");
-        if (key === currentSort.key) {
-          th.classList.add(currentSort.direction === "asc" ? "sorted-asc" : "sorted-desc");
-        }
-      });
-
-      rows.forEach((row, idx) => {
+    function renderTable(rows) {
+      tableBody.innerHTML = "";
+      rows.forEach((r, idx) => {
         const tr = document.createElement("tr");
 
         const tdIndex = document.createElement("td");
-        tdIndex.className = "index-cell";
         tdIndex.textContent = idx + 1;
+        tdIndex.className = "number-cell";
         tr.appendChild(tdIndex);
 
         const tdName = document.createElement("td");
+        tdName.textContent = r.name;
         tdName.className = "name-cell";
-        tdName.textContent = row.name;
         tr.appendChild(tdName);
 
         const tdParty = document.createElement("td");
         tdParty.className = "party-cell";
-        if (row.partyName) {
+        if (r.partyName) {
           const span = document.createElement("span");
           span.className = "party-badge";
-          span.style.backgroundColor = getPartyColor(row.partyCategory);
-          span.textContent = row.partyName;
+          span.textContent = r.partyName;
+          span.style.backgroundColor = getPartyColor(r.partyCategory);
           tdParty.appendChild(span);
         }
         tr.appendChild(tdParty);
 
-        const tdNed = document.createElement("td");
-        tdNed.className = "number-cell";
-        tdNed.textContent = fmtNumber(row.nedalyvavo);
-        tr.appendChild(tdNed);
+        function addNumCell(value) {
+          const td = document.createElement("td");
+          td.textContent = value;
+          td.className = "number-cell";
+          tr.appendChild(td);
+        }
 
-        const tdPries = document.createElement("td");
-        tdPries.className = "number-cell";
-        tdPries.textContent = fmtNumber(row.pries);
-        tr.appendChild(tdPries);
+        addNumCell(r.nedalyvavo);
+        addNumCell(r.pries);
+        addNumCell(r.uz);
+        addNumCell(r.susilaike);
+        addNumCell(r.registravosi);
+        addNumCell(r.uza);
+        addNumCell(r.uzb);
 
-        const tdUz = document.createElement("td");
-        tdUz.className = "number-cell";
-        tdUz.textContent = fmtNumber(row.uz);
-        tr.appendChild(tdUz);
-
-        const tdSus = document.createElement("td");
-        tdSus.className = "number-cell";
-        tdSus.textContent = fmtNumber(row.susilaike);
-        tr.appendChild(tdSus);
-
-        const tdReg = document.createElement("td");
-        tdReg.className = "number-cell";
-        tdReg.textContent = fmtNumber(row.registravosi);
-        tr.appendChild(tdReg);
-
-        const tdUzA = document.createElement("td");
-        tdUzA.className = "number-cell";
-        tdUzA.textContent = fmtNumber(row.uzA);
-        tr.appendChild(tdUzA);
-
-        const tdUzB = document.createElement("td");
-        tdUzB.className = "number-cell";
-        tdUzB.textContent = fmtNumber(row.uzB);
-        tr.appendChild(tdUzB);
-
-        statsBody.appendChild(tr);
+        tableBody.appendChild(tr);
       });
+
+      statusEl.textContent = "Duomenys įkelti. Galite filtruoti ir rikiuoti lentelę.";
+      errorEl.style.display = "none";
     }
 
-    // Įvykiai
-    partyFilterSelect.addEventListener("change", () => {
-      currentPartyFilter = partyFilterSelect.value || "ALL";
-      renderTable();
+    partyFilterEl.addEventListener("change", () => {
+      currentPartyFilter = partyFilterEl.value || "ALL";
+      applyFilterAndSort();
     });
 
-    sortMetricSelect.addEventListener("change", () => {
-      const value = sortMetricSelect.value;
-      if (!value) {
-        currentSort = { key: "name", direction: "asc" };
-      } else if (value === "name") {
-        currentSort = { key: "name", direction: "asc" };
-      } else if (value === "party") {
-        currentSort = { key: "party", direction: "asc" };
-      } else {
-        currentSort = { key: value, direction: "desc" };
-      }
-      renderTable();
+    sortSelectEl.addEventListener("change", () => {
+      currentSort = sortSelectEl.value || "name_asc";
+      applyFilterAndSort();
     });
 
-    document.querySelectorAll("th.sortable").forEach(th => {
-      th.addEventListener("click", () => {
-        const key = th.getAttribute("data-sort-key");
-        if (!key) return;
-        if (currentSort.key === key) {
-          currentSort.direction = currentSort.direction === "asc" ? "desc" : "asc";
-        } else {
-          currentSort.key = key;
-          currentSort.direction = (key === "name" || key === "party") ? "asc" : "desc";
-        }
-        renderTable();
-      });
-    });
-
-    // Inicijavimas
     (async function init() {
       try {
-        statusEl.textContent = "Kraunami duomenys iš „metu_balsavimas1.csv“...";
-        await loadStats();
-        statusEl.textContent = "Kraunamos partijos iš „members_parties.csv“...";
-        await loadParties();
-        attachParties();
-        buildPartyFilterOptions();
-        statusEl.textContent = "Duomenys įkelti. Galite filtruoti ir rūšiuoti lentelę.";
-        errorEl.style.display = "none";
-        renderTable();
+        const partyMap = await loadMembersParties();
+        const stats = await loadStats(partyMap);
+        allRows = stats;
+        buildPartyFilterOptions(allRows);
+        applyFilterAndSort();
       } catch (err) {
         console.error(err);
         statusEl.textContent = "";
-        errorEl.textContent = err.message;
+        errorEl.textContent = err.message || "Įvyko klaida.";
         errorEl.style.display = "block";
       }
     })();
