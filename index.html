@@ -538,8 +538,8 @@
         statusEl.textContent = "Kraunami duomenys iš „metu_balsavimas1.csv“ ir „members_parties.csv“...";
 
         const [mainText, partiesText] = await Promise.all([
-          fetchTextSafe("metu_balsavimas1.csv"),
-          fetchTextSafe("members_parties.csv")
+          fetchTextSafe("metu_balsavimas1.csv?v=2")
+         fetchTextSafe("members_parties.csv?v=2")
         ]);
 
         const parsedParties = parseCSV(partiesText);
