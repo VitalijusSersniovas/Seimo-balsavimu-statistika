@@ -332,7 +332,6 @@
 
     function mapMembersParties(parsed) {
       const { headers, rows } = parsed;
-      const delimiterParty = headers.includes("member") ? "member" : headers[0];
 
       const idxMember = headers.findIndex(h => h.toLowerCase().includes("member"));
       const idxParty  = headers.findIndex(h => h.toLowerCase().includes("party"));
@@ -365,7 +364,13 @@
       const idxName        = idxOf(["seimo nariai", "seimo narys"]);
       const idxNedalyvavo  = idxOf(["nedalyvavo"]);
       const idxPries       = idxOf(["prieš", "pries"]);
-      const idxUz          = idxOf(["už ", "uz "]);
+
+      // PAGRINDINIS „UŽ“ – tiksliai tik šis stulpelis, ne „Už A“ / „Už B“
+      const idxUz = headers.findIndex(h => {
+        const hl = h.toLowerCase().replace(/["']/g, "").trim();
+        return hl === "už" || hl === "uz";
+      });
+
       const idxSusilaike   = idxOf(["susilaikė", "susilaike"]);
       const idxRegistravosi= idxOf(["registravosi"]);
       const idxUzA         = idxOf(["už a", "uz a"]);
@@ -417,7 +422,6 @@
 
       const categories = Array.from(set).sort((a, b) => a.localeCompare(b, "lt"));
 
-      // išvalom ir paliekam "Visos partijos"
       partyFilterSelect.innerHTML = "";
       const allOpt = document.createElement("option");
       allOpt.value = "ALL";
